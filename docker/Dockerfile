@@ -28,6 +28,15 @@ RUN addgroup \
 
 RUN mkdir -p /home/deploy && \
   chown deploy:deploy /home/deploy
+  
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION v20.10.0
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
 
 # deploy:deploy
 USER 1000:1000
