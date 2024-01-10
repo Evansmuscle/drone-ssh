@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM node:20-alpine
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -11,10 +11,6 @@ LABEL maintainer="Kaan Korkmaz <katokorkmaz@gmail.com>" \
 LABEL org.opencontainers.image.source=https://github.com/Evansmuscle/drone-ssh
 LABEL org.opencontainers.image.description="Execute commands on a remote host through SSH"
 LABEL org.opencontainers.image.licenses=MIT
-
-RUN apk add --update curl && \
-    rm -rf /var/cache/apk/*
-CMD /bin/bash
 
 RUN apk add --no-cache ca-certificates && \
   rm -rf /var/cache/apk/*
@@ -32,15 +28,6 @@ RUN addgroup \
 
 RUN mkdir -p /home/deploy && \
   chown deploy:deploy /home/deploy
-  
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION v20.10.0
-
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
 
 # deploy:deploy
 USER 1000:1000
