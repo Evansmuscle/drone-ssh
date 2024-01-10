@@ -12,6 +12,10 @@ LABEL org.opencontainers.image.source=https://github.com/Evansmuscle/drone-ssh
 LABEL org.opencontainers.image.description="Execute commands on a remote host through SSH"
 LABEL org.opencontainers.image.licenses=MIT
 
+RUN apk add --update curl && \
+    rm -rf /var/cache/apk/*
+CMD /bin/bash
+
 RUN apk add --no-cache ca-certificates && \
   rm -rf /var/cache/apk/*
 
