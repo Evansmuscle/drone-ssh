@@ -3,12 +3,12 @@ FROM alpine:3.17
 ARG TARGETOS
 ARG TARGETARCH
 
-LABEL maintainer="Bo-Yi Wu <appleboy.tw@gmail.com>" \
+LABEL maintainer="Kaan Korkmaz <katokorkmaz@gmail.com>" \
   org.label-schema.name="SSH Plugin" \
-  org.label-schema.vendor="Bo-Yi Wu" \
+  org.label-schema.vendor="Kaan Korkmaz" \
   org.label-schema.schema-version="1.0"
 
-LABEL org.opencontainers.image.source=https://github.com/appleboy/drone-ssh
+LABEL org.opencontainers.image.source=https://github.com/Evansmuscle/drone-ssh
 LABEL org.opencontainers.image.description="Execute commands on a remote host through SSH"
 LABEL org.opencontainers.image.licenses=MIT
 
